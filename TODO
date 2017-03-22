@@ -1,0 +1,45 @@
+# -*- mode: org -*-
+#+SEQ_TODO: TODO(t) INPROGRESS(i) DEPENDENCIES TESTING | DONE(d) CANCELLED
+#+STARTUP: hidestars content lognotedone lognoterepeat lognotereschedule lognoteredeadline lognoterefile lognoteclock-out
+#+PRIORITIES: 1 5 3 BLOCK(1) CRITICAL(2) MAJOR(3) MINOR(4) TRIVIAL(5)
+
+* Basics
+  - [ ] Basics
+  - [ ] Collections
+  - [ ] Enum
+  - [ ] Pattern Matching
+  - [ ] Control Structures
+  - [ ] Functions
+  - [ ] Pipe Operator
+  - [ ] Modules
+  - [ ] Mix
+  - [ ] Sigils
+  - [ ] Documentation
+  - [ ] Testing
+  - [ ] Comprehensions
+  - [ ] Strings
+  - [ ] Custom Mix Tasks
+  - [ ] IEx Helpers
+* Advanced
+  - [ ] Erlang Interoperability
+  - [ ] Error Handling
+  - [ ] Executables
+  - [ ] Concurrency
+  - [ ] OTP Concurrency
+  - [ ] OTP Supervisors
+  - [ ] Metaprogramming
+  - [ ] Umbrella Projects
+  - [ ] Specifications and types
+  - [ ] Behaviors
+  - [ ] GenStage
+  - [ ] Protocols
+* Specifics
+  - [ ] Plug
+  - [ ] Ecto
+  - [ ] Embedded Elixir (EEx)
+  - [ ] Erlang Term Storage (ETS)
+  - [ ] Mnesia
+  - [ ] Debugging
+* Libraries
+  - [ ] Guardian (Basics)
+  - [ ] Poolboy
