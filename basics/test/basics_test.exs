@@ -47,4 +47,21 @@ defmodule BasicsTest do
     assert Enum.reduce(["a","b","c"], "1", fn(x,acc)-> x <> acc end) == "cba1"
     assert Enum.uniq_by([1, 2, 3, 2, 1, 1, 1, 1, 1], fn x -> x end) == [1,2,3]
   end
+
+  test "pattern matching" do
+    k1 = "hello"
+    k2 = :hello
+    %{^k1 => v1} = %{"hello" => "world", :hello => "world2"}
+    %{^k2 => v2} = %{"hello" => "world", :hello => "world2"}
+    assert v1 == "world"
+    assert v2 == "world2"
+
+    greeting = "Hello"
+    greet = fn
+      (^greeting, name) -> "Hi #{name}"
+      (greeting, name) -> "#{greeting}, #{name}"
+    end
+    assert greet.("Hello", "Sean") == "Hi Sean"
+    assert greet.("Mornin'", "Sean") == "Mornin', Sean"
+  end
 end
