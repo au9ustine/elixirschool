@@ -64,4 +64,19 @@ defmodule BasicsTest do
     assert greet.("Hello", "Sean") == "Hi Sean"
     assert greet.("Mornin'", "Sean") == "Mornin', Sean"
   end
+
+  test "control structures" do
+    pie = 3.14
+    case "cherry pie" do
+      ^pie -> "Not so tasty"
+      pie -> "I bet #{pie} is tasty"
+    end
+
+    case {1, 2, 3} do
+      {1, x, 3} when x > 0 ->
+        "Will match"
+      _ ->
+        "Won't match"
+    end
+  end
 end
