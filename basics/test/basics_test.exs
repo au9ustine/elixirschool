@@ -92,4 +92,12 @@ defmodule BasicsTest do
     assert "Elixir rocks" |> String.split == ["Elixir", "rocks"]
     assert "Elixir rocks" |> String.upcase |> String.split == ["ELIXIR", "ROCKS"]
   end
+
+  defmodule Example.User do
+    defstruct name: "Sean", roles: []
+  end
+  test "modules" do
+    assert %Example.User{} == %Example.User{name: "Sean", roles: []}
+    assert %Example.User{name: "Steve"} == %Example.User{name: "Steve", roles: []}
+  end
 end
