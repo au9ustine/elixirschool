@@ -67,16 +67,24 @@ defmodule BasicsTest do
 
   test "control structures" do
     pie = 3.14
-    case "cherry pie" do
+    ret = case "cherry pie" do
       ^pie -> "Not so tasty"
       pie -> "I bet #{pie} is tasty"
     end
+    assert ret == "I bet cherry pie is tasty"
 
-    case {1, 2, 3} do
+    ret = case {1, 2, 3} do
       {1, x, 3} when x > 0 ->
         "Will match"
       _ ->
         "Won't match"
     end
+    assert ret == "Will match"
+  end
+
+  test "functions" do
+    my_sum = &(&1 + &2)
+    assert my_sum.(2, 3) == 5
+    assert if false, do: :this, else: :that == :that
   end
 end
