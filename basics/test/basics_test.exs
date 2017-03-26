@@ -87,4 +87,9 @@ defmodule BasicsTest do
     assert my_sum.(2, 3) == 5
     assert if false, do: :this, else: :that == :that
   end
+
+  test "Pipe operator" do
+    assert "Elixir rocks" |> String.split == ["Elixir", "rocks"]
+    assert "Elixir rocks" |> String.upcase |> String.split == ["ELIXIR", "ROCKS"]
+  end
 end

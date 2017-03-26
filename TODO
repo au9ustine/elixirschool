@@ -18,7 +18,7 @@
   - [X] Pattern Matching
   - [X] Control Structures
   - [X] Functions
-  - [ ] Pipe Operator
+  - [X] Pipe Operator
   - [ ] Modules
   - [ ] Mix
   - [ ] Sigils
