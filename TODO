@@ -20,8 +20,8 @@
   - [X] Functions
   - [X] Pipe Operator
   - [X] Modules
-  - [ ] Mix
-  - [ ] Sigils
+  - [X] Mix
+  - [X] Sigils
   - [ ] Documentation
   - [ ] Testing
   - [ ] Comprehensions
