@@ -93,11 +93,24 @@ defmodule BasicsTest do
     assert "Elixir rocks" |> String.upcase |> String.split == ["ELIXIR", "ROCKS"]
   end
 
-  defmodule Example.User do
-    defstruct name: "Sean", roles: []
-  end
   test "modules" do
-    assert %Example.User{} == %Example.User{name: "Sean", roles: []}
-    assert %Example.User{name: "Steve"} == %Example.User{name: "Steve", roles: []}
+    assert %Basics.Example.User{} == %Basics.Example.User{name: "Sean", roles: []}
+    assert %Basics.Example.User{name: "Steve"} == %Basics.Example.User{name: "Steve", roles: []}
+  end
+
+  test "sigils" do
+    assert ~c/2 + 7 = #{2 + 7}/ == '2 + 7 = 9'
+    assert ~C/2 + 7 = #{2 + 7}/ == '2 + 7 = \#{2 + 7}'
+    assert "Elixir" =~ ~r/elixir/ == false
+    assert "elixir" =~ ~r/elixir/
+    assert "ELIXIR" =~ ~r/elixir/i
+    assert Regex.split(~r/_/, "100_000_000") == ["100", "000", "000"]
+    assert ~s/welcome to elixir #{String.downcase "SCHOOL"}/ == "welcome to elixir school"
+    assert ~S/welcome to elixir #{String.downcase "SCHOOL"}/ == "welcome to elixir \#{String.downcase \"SCHOOL\"}"
+    assert ~w/i love #{"excel" |> String.codepoints |> hd}lixir school/ == ["i", "love", "elixir", "school"]
+    assert ~W/i love #{"excel" |> String.codepoints |> hd}lixir school/ == ["i", "love", "\#{\"excel\"", "|>", "String.codepoints", "|>", "hd}lixir", "school"]
+    assert NaiveDateTime.from_iso8601("2015-01-23 23:50:07") == {:ok, ~N[2015-01-23 23:50:07]}
+    import Basics.MySigils
+    assert ~u/elixir school/ == "ELIXIR SCHOOL"
   end
 end
