@@ -25,7 +25,7 @@
   - [X] Documentation
   - [X] Testing
   - [X] Comprehensions
-  - [ ] Strings
+  - [X] Strings
   - [ ] Custom Mix Tasks
   - [ ] IEx Helpers
 * Advanced

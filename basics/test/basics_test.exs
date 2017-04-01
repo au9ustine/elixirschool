@@ -154,4 +154,21 @@ defmodule BasicsTest do
     assert (for {k, v} <- [one: 1, two: 2, three: 3], into: %{}, do: {k, v}) == %{one: 1, three: 3, two: 2}
     assert (for c <- [72, 101, 108, 108, 111], into: "", do: <<c>>) == "Hello"
   end
+
+  test "string" do
+    assert <<104,101,108,108,111>> == "hello"
+    [hd|tl] = 'hello'
+    assert {hd, tl} == {104, 'ello'}
+    assert Enum.reduce('hello', "", fn char, acc -> acc <> to_string(char) <> "," end) == "104,101,108,108,111,"
+    assert "\u0061\u0301" == "á"
+    assert length(String.codepoints "\u0061\u0301") == 2
+    assert length(String.graphemes "\u0061\u0301") == 1
+    assert String.length("Hello") == 5
+    assert String.replace("Hello", "e", "a") == "Hallo"
+    assert String.duplicate("Oh my ", 3) == "Oh my Oh my Oh my "
+    assert String.split("Hello World", " ") == ["Hello", "World"]
+    alias Basics.Anagram
+    assert Anagram.anagrams?("Hello", "ohell")
+    assert Anagram.anagrams?("María", "íMara")
+  end
 end
