@@ -22,4 +22,10 @@ defmodule Basics do
     """
     def sigil_u(string, []), do: String.upcase(string)
   end
+
+  defmodule SendingProcess do
+    def run(pid) do
+      send pid, :ping
+    end
+  end
 end

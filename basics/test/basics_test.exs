@@ -113,4 +113,15 @@ defmodule BasicsTest do
     import Basics.MySigils
     assert ~u/elixir school/ == "ELIXIR SCHOOL"
   end
+
+  test "receives ping" do
+    alias Basics.SendingProcess
+    SendingProcess.run(self())
+    assert_received :ping
+  end
+
+  import ExUnit.CaptureIO
+  test "outputs Hello World" do
+    assert capture_io(fn -> IO.puts "Hello World" end) == "Hello World\n"
+  end
 end
