@@ -23,8 +23,8 @@
   - [X] Mix
   - [X] Sigils
   - [X] Documentation
-  - [ ] Testing
-  - [ ] Comprehensions
+  - [X] Testing
+  - [X] Comprehensions
   - [ ] Strings
   - [ ] Custom Mix Tasks
   - [ ] IEx Helpers

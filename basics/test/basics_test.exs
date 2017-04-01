@@ -85,7 +85,8 @@ defmodule BasicsTest do
   test "functions" do
     my_sum = &(&1 + &2)
     assert my_sum.(2, 3) == 5
-    assert if false, do: :this, else: :that == :that
+    actual = if false, do: :this, else: :that
+    assert actual == :that
   end
 
   test "Pipe operator" do
@@ -123,5 +124,34 @@ defmodule BasicsTest do
   import ExUnit.CaptureIO
   test "outputs Hello World" do
     assert capture_io(fn -> IO.puts "Hello World" end) == "Hello World\n"
+  end
+
+  test "comprehensions" do
+    lst = 1..5 |> Enum.to_list
+    assert (for x <- lst, do: x*x) == [1, 4, 9, 16, 25]
+    assert (for {_key, val} <- [one: 1, two: 2, three: 3], do: val) == [1, 2, 3]
+    assert (for {k, v} <- %{"a" => "A", "b" => "B"}, do: {k, v}) == [{"a", "A"}, {"b", "B"}]
+    assert (for <<c <- "hello">>, do: <<c>>) == ["h", "e", "l", "l", "o"]
+    assert (for {:ok, val} <- [ok: "Hello", error: "Unknown", ok: "World"], do: val) == ["Hello", "World"]
+    assert (for n <- [1, 2, 3, 4], times <- 1..n, do: String.duplicate("*", times)) == ["*", "*", "**", "*", "**", "***", "*", "**", "***", "****"]
+    expected = "1 - 1
+2 - 1
+2 - 2
+3 - 1
+3 - 2
+3 - 3
+4 - 1
+4 - 2
+4 - 3
+4 - 4
+"
+    assert capture_io(fn -> for n <- [1, 2, 3, 4], times <- 1..n, do: IO.puts "#{n} - #{times}" end) == expected
+
+    import Integer
+    assert (for x <- 1..10, is_even(x), do: x) == [2, 4, 6, 8, 10]
+    assert (for x <- 1..100, is_even(x), rem(x, 3) == 0, do: x) == [6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96]
+
+    assert (for {k, v} <- [one: 1, two: 2, three: 3], into: %{}, do: {k, v}) == %{one: 1, three: 3, two: 2}
+    assert (for c <- [72, 101, 108, 108, 111], into: "", do: <<c>>) == "Hello"
   end
 end
