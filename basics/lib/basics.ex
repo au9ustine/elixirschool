@@ -4,6 +4,22 @@ defmodule Basics do
   end
 
   defmodule MySigils do
+    @moduledoc """
+    This is module doc for MySigils
+    """
+
+    # This is inline documentation of sigil_u
+    @doc """
+    sigil_u is a function of module MySigils
+    ## Title
+
+    - item1
+    - item2
+
+    ```
+    code example
+    ```
+    """
     def sigil_u(string, []), do: String.upcase(string)
   end
 end
