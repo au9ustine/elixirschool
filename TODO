@@ -26,7 +26,7 @@
   - [X] Testing
   - [X] Comprehensions
   - [X] Strings
-  - [ ] Custom Mix Tasks
+  - [X] Custom Mix Tasks
   - [ ] IEx Helpers
 * Advanced
   - [ ] Erlang Interoperability
