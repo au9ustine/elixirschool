@@ -32,7 +32,7 @@
   - [X] Erlang Interoperability
   - [X] Error Handling
   - [X] Executables
-  - [ ] Concurrency
+  - [X] Concurrency
   - [ ] OTP Concurrency
   - [ ] OTP Supervisors
   - [ ] Metaprogramming
