@@ -30,7 +30,7 @@
   - [X] IEx Helpers
 * Advanced
   - [X] Erlang Interoperability
-  - [ ] Error Handling
+  - [X] Error Handling
   - [ ] Executables
   - [ ] Concurrency
   - [ ] OTP Concurrency
