@@ -7,6 +7,7 @@ defmodule Advanced.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     escript: escript,
      deps: deps()]
   end
 
@@ -30,5 +31,9 @@ defmodule Advanced.Mixfile do
     [
       {:png, github: "yuce/png"}
     ]
+  end
+
+  def escript do
+    [main_module: Advanced.ExampleApp.CLI]
   end
 end
