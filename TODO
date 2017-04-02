@@ -29,7 +29,7 @@
   - [X] Custom Mix Tasks
   - [X] IEx Helpers
 * Advanced
-  - [ ] Erlang Interoperability
+  - [X] Erlang Interoperability
   - [ ] Error Handling
   - [ ] Executables
   - [ ] Concurrency
