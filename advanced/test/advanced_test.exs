@@ -26,4 +26,18 @@ defmodule AdvancedTest do
     IO.puts "Do some other works but the task is still in-progress"
     assert Task.await(task) == 4000
   end
+
+  test "OPT Concurrency" do
+    alias Advanced.SimpleQueue
+    # OTP Concurrency - Synchronous Functions
+    # SimpleQueue.start_link([1, 2, 3])
+    # assert SimpleQueue.dequeue == 1
+    # assert SimpleQueue.dequeue == 2
+    # assert SimpleQueue.queue == [3]
+    # OTP Concurrency - Asynchronous Functions
+    SimpleQueue.start_link([1, 2, 3])
+    assert SimpleQueue.queue == [1, 2, 3]
+    SimpleQueue.enqueue(20)
+    assert SimpleQueue.queue == [1, 2, 3, 20]
+  end
 end

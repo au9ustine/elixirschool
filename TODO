@@ -33,7 +33,7 @@
   - [X] Error Handling
   - [X] Executables
   - [X] Concurrency
-  - [ ] OTP Concurrency
+  - [X] OTP Concurrency
   - [ ] OTP Supervisors
   - [ ] Metaprogramming
   - [ ] Umbrella Projects
