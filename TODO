@@ -34,7 +34,7 @@
   - [X] Executables
   - [X] Concurrency
   - [X] OTP Concurrency
-  - [ ] OTP Supervisors
+  - [X] OTP Supervisors
   - [ ] Metaprogramming
   - [ ] Umbrella Projects
   - [ ] Specifications and types

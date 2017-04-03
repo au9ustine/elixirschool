@@ -27,7 +27,7 @@ defmodule AdvancedTest do
     assert Task.await(task) == 4000
   end
 
-  test "OPT Concurrency" do
+  test "OTP Concurrency" do
     alias Advanced.SimpleQueue
     # OTP Concurrency - Synchronous Functions
     # SimpleQueue.start_link([1, 2, 3])
@@ -39,5 +39,14 @@ defmodule AdvancedTest do
     assert SimpleQueue.queue == [1, 2, 3]
     SimpleQueue.enqueue(20)
     assert SimpleQueue.queue == [1, 2, 3, 20]
+  end
+
+  test "OTP Supervisors" do
+    import Supervisor.Spec
+    alias Advanced.SimpleQueue
+    children = [
+      worker(SimpleQueue, [], [name: SimpleQueue])
+    ]
+    {:ok, pid} = Supervisor.start_link(children, strategy: :one_for_one)
   end
 end
