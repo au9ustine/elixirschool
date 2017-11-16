@@ -49,4 +49,29 @@ defmodule AdvancedTest do
     ]
     {:ok, pid} = Supervisor.start_link(children, strategy: :one_for_one)
   end
+
+  test "metaprogramming" do
+    denominator = 2
+    assert quote do: divide(42, denominator) == {:divide, [], [42, {:denominator, [], Elixir}]}
+    assert quote do: divide(42, unquote(denominator)) == {:divide, [], [42, 2]}
+    alias Advanced.OurMacro
+    require OurMacro
+    assert OurMacro.unless(true, do: "Hi") == nil
+    assert OurMacro.unless(false, do: "Hi") == "Hi"
+    alias OurMacro.Logger
+    alias OurMacro.Example
+    assert capture_io(fn -> Example.test end) == "Logged message: This is a log message\n"
+    quoted = quote do
+      OurMacro.unless true, do: "Hi"
+    end
+    assert capture_io(fn -> quoted |> Macro.expand_once(__ENV__) |> Macro.to_string |> IO.puts end) == "if(!true) do
+  \"Hi\"
+end
+"
+    assert capture_io(fn -> quoted |> Macro.expand(__ENV__) |> Macro.to_string |> IO.puts end) == "case(!true) do
+  x when x in [false, nil] ->
+  _ ->
+    \"Hi\"
+"
+  end
 end

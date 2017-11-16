@@ -107,4 +107,27 @@ defmodule Advanced do
     def enqueue(value), do: GenServer.cast(__MODULE__, {:enqueue, value})
   end
 
+  defmodule OurMacro do
+    defmacro unless(expr, do: block) do
+      quote do
+        if !unquote(expr), do: unquote(block)
+      end
+    end
+
+    defmodule Logger do
+      defmacro log(msg) do
+        quote do
+          IO.puts("Logged message: #{unquote(msg)}")
+        end
+      end
+    end
+
+    defmodule Example do
+      require Logger
+
+      def test do
+        Logger.log("This is a log message")
+      end
+    end
+  end
 end
